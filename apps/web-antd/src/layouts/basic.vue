@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { NotificationItem } from '@vben/layouts';
 
-import { computed, ref, watch } from 'vue';
+import { onMounted, computed, ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 
 import { AuthenticationLoginExpiredModal } from '@vben/common-ui';
@@ -59,6 +59,11 @@ const userStore = useUserStore();
 const authStore = useAuthStore();
 const accessStore = useAccessStore();
 const { destroyWatermark, updateWatermark } = useWatermark();
+
+onMounted(()=>{
+  authStore.fetchUserInfo();
+})
+
 const showDot = computed(() =>
   notifications.value.some((item) => !item.isRead),
 );
@@ -67,31 +72,17 @@ const menus = computed(() => [
   {
     handler: () => {
       router.push({ name: 'ChangePassword' });
-      // openWindow(VBEN_DOC_URL, {
-      //   target: '_blank',
-      // });
     },
     icon: BookOpenText,
     text: $t('page.layout.menu.changePassword'),
   },
   {
     handler: () => {
-      openWindow(VBEN_GITHUB_URL, {
-        target: '_blank',
-      });
+      router.push({ name: 'GoogleAuthenticator' });
     },
     icon: MdiGithub,
-    text: 'GitHub',
-  },
-  {
-    handler: () => {
-      openWindow(`${VBEN_GITHUB_URL}/issues`, {
-        target: '_blank',
-      });
-    },
-    icon: CircleHelp,
-    text: $t('ui.widgets.qa'),
-  },
+    text: $t('page.layout.menu.googleAuthenticator'),
+  }
 ]);
 
 const avatar = computed(() => {

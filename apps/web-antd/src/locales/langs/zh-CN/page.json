@@ -1,7 +1,8 @@
 {
   "layout":{
     "menu":{
-      "changePassword":"修改密码"
+      "changePassword":"修改密码",
+      "googleAuthenticator":"谷歌验证器"
     }
   },
   "auth": {

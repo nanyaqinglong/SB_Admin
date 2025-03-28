@@ -44,6 +44,14 @@ const coreRoutes: RouteRecordRaw[] = [
           title: $t('page.auth.changePassword'),
         },
       },
+      {
+        name: 'GoogleAuthenticator',
+        path: 'google-authenticator',
+        component: () => import('#/views/_core/authentication/google-authenticator.vue'),
+        meta: {
+          title: $t('page.layout.menu.googleAuthenticator'),
+        },
+      },
     ],
   },
   {
