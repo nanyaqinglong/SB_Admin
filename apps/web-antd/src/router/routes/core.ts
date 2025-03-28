@@ -35,7 +35,16 @@ const coreRoutes: RouteRecordRaw[] = [
     name: 'Root',
     path: '/',
     redirect: DEFAULT_HOME_PATH,
-    children: [],
+    children: [
+      {
+        name: 'ChangePassword',
+        path: 'change-password',
+        component: () => import('#/views/_core/authentication/change-password.vue'),
+        meta: {
+          title: $t('page.auth.changePassword'),
+        },
+      },
+    ],
   },
   {
     component: AuthPageLayout,
@@ -55,6 +64,7 @@ const coreRoutes: RouteRecordRaw[] = [
           title: $t('page.auth.login'),
         },
       },
+
       {
         name: 'CodeLogin',
         path: 'code-login',

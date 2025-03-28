@@ -1,7 +1,13 @@
 {
+  "layout":{
+    "menu":{
+      "changePassword":"修改密码"
+    }
+  },
   "auth": {
     "login": "登录",
     "register": "注册",
+    "changePassword": "修改密码",
     "codeLogin": "验证码登录",
     "qrcodeLogin": "二维码登录",
     "forgetPassword": "忘记密码"
@@ -10,5 +16,12 @@
     "title": "概览",
     "analytics": "分析页",
     "workspace": "工作台"
+  },
+  "systemSettings": {
+    "title": "系统设置",
+    "systemSettingList": "设置列表",
+    "addSetting": "新增设置",
+    "editSetting": "编辑设置",
+    "changeSetting": "修改设置"
   }
 }

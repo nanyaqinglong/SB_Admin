@@ -1,5 +1,7 @@
 import { acceptHMRUpdate, defineStore } from 'pinia';
 
+const SB_UserInfo = "UserInfo";
+
 interface BasicUserInfo {
   [key: string]: any;
   /**
@@ -43,6 +45,7 @@ export const useUserStore = defineStore('core-user', {
     setUserInfo(userInfo: BasicUserInfo | null) {
       // 设置用户信息
       this.userInfo = userInfo;
+      localStorage.setItem("SB_UserInfo",JSON.stringify(userInfo))
       // 设置角色信息
       const roles = userInfo?.roles ?? [];
       this.setUserRoles(roles);
@@ -52,7 +55,7 @@ export const useUserStore = defineStore('core-user', {
     },
   },
   state: (): AccessState => ({
-    userInfo: null,
+    userInfo: JSON.parse(localStorage.getItem("SB_UserInfo")) ?? null,
     userRoles: [],
   }),
 });

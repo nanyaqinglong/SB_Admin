@@ -63,6 +63,8 @@ function createRequestClient(baseURL: string, options?: RequestClientOptions) {
   // 请求头处理
   client.addRequestInterceptor({
     fulfilled: async (config) => {
+      config.headers['Content-Type'] =
+        'application/x-www-form-urlencoded;charset=utf-8';
       const accessStore = useAccessStore();
 
       config.headers.Authorization = formatToken(accessStore.accessToken);
@@ -110,4 +112,8 @@ export const requestClient = createRequestClient(apiURL, {
   responseReturn: 'data',
 });
 
-export const baseRequestClient = new RequestClient({ baseURL: apiURL });
+export const baseRequestClient = createRequestClient(apiURL, {
+  responseReturn: 'body',
+});
+
+// export const baseRequestClient = new RequestClient({ baseURL: apiURL });
