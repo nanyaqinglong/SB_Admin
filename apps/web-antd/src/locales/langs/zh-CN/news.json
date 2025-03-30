@@ -1,0 +1,8 @@
+{
+  "role": {
+    "newsguanli": "新闻管理",
+    "newsliebiao": "新闻列表",
+    "newsbianji": "新闻编辑",
+    "newstianjia": "新闻添加"
+  }
+}

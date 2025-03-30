@@ -1,7 +1,7 @@
 /**
  * 该文件可自行根据业务逻辑进行调整
  */
-import type { RequestClientOptions } from '@vben/request';
+import type { RequestClientOptions, RequestResponse } from '@vben/request';
 
 import { useAppConfig } from '@vben/hooks';
 import { preferences } from '@vben/preferences';
@@ -108,6 +108,38 @@ function createRequestClient(baseURL: string, options?: RequestClientOptions) {
   return client;
 }
 
+
+
+function createSBRequestClient() {
+  var client = createRequestClient(apiURL, {
+    responseReturn: 'body',
+  });
+
+  var hideLoading = function () { }
+
+  client.addRequestInterceptor({
+    fulfilled: async (config) => {
+      hideLoading = message.loading();
+      return config;
+    },
+  });
+
+  client.addResponseInterceptor({
+    fulfilled: async (response: any) => {
+      hideLoading()
+
+      if (response.code == 0) {
+        message.success(response.message);
+      } else {
+        message.error(response.message);
+      }
+      return response;
+    }
+  });
+
+  return client;
+}
+
 export const requestClient = createRequestClient(apiURL, {
   responseReturn: 'data',
 });
@@ -115,5 +147,7 @@ export const requestClient = createRequestClient(apiURL, {
 export const baseRequestClient = createRequestClient(apiURL, {
   responseReturn: 'body',
 });
+
+export const sbRequestClient = createSBRequestClient();
 
 // export const baseRequestClient = new RequestClient({ baseURL: apiURL });
