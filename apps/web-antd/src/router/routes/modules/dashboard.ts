@@ -5,8 +5,8 @@ import { $t } from '#/locales';
 const routes: RouteRecordRaw[] = [
   {
     meta: {
+      order: -100,
       icon: 'lucide:layout-dashboard',
-      order: -1,
       title: $t('page.dashboard.title'),
     },
     name: 'Dashboard',

@@ -4,7 +4,7 @@ import { $t } from '#/locales';
 const routes: RouteRecordRaw[] = [
   {
     meta: {
-    order: -1,
+    order: -80,
     icon: 'lucide:layout-dashboard',
     title: $t('fundRecord.role.fundRecordguanli'),
   },
@@ -35,6 +35,7 @@ const routes: RouteRecordRaw[] = [
       path: 'FundRecordEdit/:id',
       component: () => import('#/views/fundRecord/Form.vue'),
       meta: {
+        hideInMenu:true,
         icon: 'ion:edit',
         title: $t('fundRecord.role.fundRecordbianji'),
         hideMenu: true,

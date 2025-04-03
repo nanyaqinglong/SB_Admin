@@ -6,7 +6,7 @@ const routes: RouteRecordRaw[] = [
   {
     meta: {
       icon: 'lucide:layout-dashboard',
-      order: -1,
+      order: -70,
       title: $t('page.systemSettings.title'),
     },
     name: 'SystemSetting',
@@ -37,7 +37,7 @@ const routes: RouteRecordRaw[] = [
         path: '/EditSetting',
         component: () => import('#/views/systemSettings/Form.vue'),
         meta: {
-          // affixTab: true,
+          hideInMenu:true,
           icon: 'lucide:area-chart',
           title: $t('page.systemSettings.editSetting'),
         },
@@ -50,6 +50,16 @@ const routes: RouteRecordRaw[] = [
           // affixTab: true,
           icon: 'lucide:area-chart',
           title: $t('page.systemSettings.changeSetting'),
+        },
+      },
+      {
+        name: 'SettingCategoryList',
+        path: '/SettingCategoryList',
+        component: () => import('#/views/systemSettings/CategoryList.vue'),
+        meta: {
+          // affixTab: true,
+          icon: 'lucide:area-chart',
+          title: $t('page.systemSettings.settingCategoryList'),
         },
       }
     ],

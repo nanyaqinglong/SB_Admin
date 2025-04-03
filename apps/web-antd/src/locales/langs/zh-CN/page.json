@@ -23,6 +23,8 @@
     "systemSettingList": "设置列表",
     "addSetting": "新增设置",
     "editSetting": "编辑设置",
-    "changeSetting": "修改设置"
+    "changeSetting": "修改设置",
+    "settingCategoryList": "分类列表",
+    "settingCategoryEdit": "修改分类"
   }
 }

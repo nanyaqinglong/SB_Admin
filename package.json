@@ -113,5 +113,8 @@
       "canvas",
       "node-gyp"
     ]
+  },
+  "dependencies": {
+    "tinymce": "^7"
   }
 }

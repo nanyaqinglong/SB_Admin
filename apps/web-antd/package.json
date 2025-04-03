@@ -26,6 +26,7 @@
     "#/*": "./src/*"
   },
   "dependencies": {
+    "@tinymce/tinymce-vue": "^5",
     "@vben/access": "workspace:*",
     "@vben/common-ui": "workspace:*",
     "@vben/constants": "workspace:*",
@@ -44,7 +45,11 @@
     "ant-design-vue": "catalog:",
     "dayjs": "catalog:",
     "pinia": "catalog:",
+    "tinymce": "^7.7.2",
     "vue": "catalog:",
-    "vue-router": "catalog:"
+    "vue-router": "catalog:",
+    "eth-provider": "^0.13.7",
+    "web3": "^4.16.0",
+    "web3-eth": "^4.11.1"
   }
 }

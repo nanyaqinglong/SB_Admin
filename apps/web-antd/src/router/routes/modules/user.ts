@@ -4,7 +4,7 @@ import { $t } from '#/locales';
 const routes: RouteRecordRaw[] = [
   {
     meta: {
-    order: -1,
+    order: -90,
     icon: 'lucide:layout-dashboard',
     title: $t('user.role.userguanli'),
   },
@@ -35,6 +35,7 @@ const routes: RouteRecordRaw[] = [
       path: 'UserEdit/:id',
       component: () => import('#/views/user/Form.vue'),
       meta: {
+        hideInMenu:true,
         icon: 'ion:edit',
         title: $t('user.role.userbianji'),
         hideMenu: true,

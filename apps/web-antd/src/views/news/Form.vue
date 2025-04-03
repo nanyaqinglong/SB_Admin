@@ -1,11 +1,12 @@
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, h } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 
 import { Card, message } from 'ant-design-vue';
 
 import { useVbenForm } from '#/adapter/form';
 import dayjs from 'dayjs';
+import Editor from '@tinymce/tinymce-vue'
 
 import {
   getDetail,
@@ -18,7 +19,7 @@ import {
 const router = useRouter();
 const route = useRoute();
 
-const id = ref<number>(0);
+const id = ref<any>(0);
 
 onMounted(async () => {
   id.value = route.query.id;
@@ -51,7 +52,7 @@ const [BaseForm, baseFormApi] = useVbenForm({
       componentProps: {
         placeholder: '请选择新闻类型',
         // 菜单接口转options格式
-        afterFetch: (data: { name: string; id: number }[]) => {
+        afterFetch: (data: any) => {
           if (id.value == undefined || id.value <= 0) {
             baseFormApi.setValues({ categoryId: data.items[0].id });
           }
@@ -101,7 +102,16 @@ const [BaseForm, baseFormApi] = useVbenForm({
     },
     {
       fieldName: 'newsContent',
-      component: 'Input',
+      component: h(Editor, {
+        "api-key": "bvx37qpcrj1v4tdekmy68jbwmhebg2dezm5c0sxr9880e68o",
+        "init": {
+          "language_url": '/assets/tinymce/language/zh_CN.js',
+          "language": 'zh_CN',
+          plugins: 'code',
+          // toolbar: 'code',
+        },
+        style: { width: '100%' }
+      }),
       label: '内容',
       rules: 'required',
       defaultValue: '0',
@@ -118,24 +128,16 @@ const [BaseForm, baseFormApi] = useVbenForm({
 function onSubmit(values: Record<string, any>) {
   if (id.value > 0) {
     values.id = id.value;
-    postEdit(values).then((result) => {
-      if (result.code == 0) {
-        message.success(result.message);
-      } else {
-        message.error(result.message);
-      }
-    });
+    postEdit(values);
   } else {
     postAdd(values).then((result) => {
       if (result.code == 0) {
         id.value = result.data.id;
-        message.success(result.message);
-      } else {
-        message.error(result.message);
       }
     });
   }
 }
+
 </script>
 
 <template>

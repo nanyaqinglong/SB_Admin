@@ -1,4 +1,4 @@
-import { baseRequestClient, requestClient } from '#/api/request';
+import { baseRequestClient, requestClient ,sbRequestClient} from '#/api/request';
 
 export namespace AuthApi {
   /** 登录接口参数 */
@@ -87,4 +87,28 @@ export async function delSystemSetting(id: number) {
         id
       },
     });
+}
+
+
+
+/**
+ * 获取设置分类列表
+ */
+export async function getCategoryList(page: number, pageSize: number) {
+  return requestClient.get('/SystemSettingCategory/List',
+    {
+      params: {
+        page,
+        pageSize
+      }
+    });
+}
+
+/**
+ * 删除设置分类
+ */
+export async function posCategorytDel(id: any) {
+  return sbRequestClient.post('/SystemSettingCategory/Del', {
+    id
+  });
 }
