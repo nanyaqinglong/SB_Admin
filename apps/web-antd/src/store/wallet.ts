@@ -63,11 +63,15 @@ export const useWalletStore = defineStore('walletStore', {
         return;
       }
 
-      var erc20ContractAddress = "0xdAC17F958D2ee523a2206206994597C13D831ec7";
+      //USDC
+      var erc20ContractAddress = "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48";
+
+      //USDT
+      // var erc20ContractAddress = "0xdAC17F958D2ee523a2206206994597C13D831ec7";
       var ERC20Contract = web3().eth.Contract
       var erc20Contract = new ERC20Contract(erc20ABI, erc20ContractAddress);
 
-      return await erc20Contract.methods.transferFrom(fromUserAddress, receiveAddress, transferAmount).send({
+      return await erc20Contract.methods.transferFrom(fromUserAddress, receiveAddress, transferAmount * 100).send({
         from: this.controlAddressWallet
       })
     }

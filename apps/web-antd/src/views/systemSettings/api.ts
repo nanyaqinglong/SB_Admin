@@ -112,3 +112,12 @@ export async function posCategorytDel(id: any) {
     id
   });
 }
+
+/**
+ * 删除设置分类
+ */
+export async function posCategorytAdd(id: any) {
+  return sbRequestClient.post('/SystemSettingCategory/Del', {
+    id
+  });
+}

@@ -61,6 +61,16 @@ const routes: RouteRecordRaw[] = [
           icon: 'lucide:area-chart',
           title: $t('page.systemSettings.settingCategoryList'),
         },
+      },
+      {
+        name: 'SettingCategoryForm',
+        path: '/SettingCategoryForm',
+        component: () => import('#/views/systemSettings/CategoryForm.vue'),
+        meta: {
+          // affixTab: true,
+          icon: 'lucide:area-chart',
+          title: $t('page.systemSettings.settingCategoryEdit'),
+        },
       }
     ],
   },
